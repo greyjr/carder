@@ -1,0 +1,56 @@
+{% extends 'wrapper.html' %}
+
+{% block title %}
+	work page
+{% endblock %}
+
+{% block content %}
+
+
+<div align="center">
+	<button type="button" class="btn btn-outline-secondary btn-sm" data-target="#exampleModal" data-toggle="modal" >Главная</button>
+	<a href="#" class="btn btn-outline-secondary btn-sm" >Обновить</a>
+	<a href="#" class="btn btn-outline-secondary btn-sm" >Выбрать все</a>
+	<a href="#" class="btn btn-outline-secondary btn-sm" >Отменить все</a>
+	<a href="#" class="btn btn-outline-success btn-sm" >Создать выбранные карты</a>
+</div>
+<div align="center">
+	<table>
+		<th>content</th>
+	</table>
+</div>
+<div align="center">
+
+...
+
+</div>
+
+<button type="button" class="btn btn-default" aria-label="Left Align">
+	<span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+</button>
+
+
+
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				Действие закроет текущий документ. Уверенны?
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline-success btn-sm" data-dismiss="modal">НЕТ</button>
+				<a href="/" class="btn btn-outline-danger btn-sm">ДА</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+{% endblock %}
