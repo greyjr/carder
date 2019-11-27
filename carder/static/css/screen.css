@@ -1,3 +1,23 @@
 body{
     background: #DDDDDD;
 }
+table {
+            table-layout: fixed;}
+        td, th {
+            padding: 3px;
+            font-size: small;
+            font-weight: normal;
+            color: #0c5460;
+            border: 1px solid black;
+            max-width: 240px;}
+        body {
+            background: #DDDDDD;}
+        td.col1 {
+            color: black;}
+        td {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;}
+         hr{
+            height: 2px;
+            width: 300px;}

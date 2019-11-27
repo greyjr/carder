@@ -15,9 +15,27 @@
 	<a href="#" class="btn btn-outline-success btn-sm" >Создать выбранные карты</a>
 </div>
 <div align="center">
-	<table>
-		<th>content</th>
-	</table>
+	<table align="center">
+        <tr align="center">
+            <th>Карта</th>
+            <th>Наименование агрегата</th>
+            <th>Точки</th>
+            <th>Устройство нейтрализации</th>
+            <th>Местонахождение</th>
+            <th>Величина</th>
+        </tr>
+        {% for line in context %}
+            <tr title="карта">
+                <td><small>{{ line[0] }}</small></td>
+                <td><small>{{ line[1] }}</small></td>
+                <td><small>{{ line[2] }}</small></td>
+                <td><small></small></td>
+                <td><small>{{ line[3] }}</small></td>
+
+                <td><a href="#">Make Card</a></td>
+            </tr>
+        {% endfor %}
+    </table>
 </div>
 <div align="center">
 
@@ -25,9 +43,6 @@
 
 </div>
 
-<button type="button" class="btn btn-default" aria-label="Left Align">
-	<span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
-</button>
 
 
 
