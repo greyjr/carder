@@ -3,44 +3,113 @@
 <head>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  
+  <style>
+    
+    .table-fixed thead {
+     width: 97%;
+   }
+   .table-fixed tbody {
+     height: 230px;
+     overflow-y: auto;
+     width: 100%;
+   }
+   .table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+     display: block;
+   }
+   .table-fixed tbody td, .table-fixed thead > tr> th {
+     float: left;
+     border-bottom-width: 0;
+   }
+
+ </style>
+
+
+
 </head>
 <body>
 
-  <div class="container">
-    <h2>Activate Modal with JavaScript</h2>
-    <!-- Trigger the modal with a button -->
-    <button type="button" class="btn btn-info btn-sm" id="myBtn">Open Modal</button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
-      <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-body">
-            are you sure?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
+  <div align="center">
+    <button type="button" class="btn btn-outline-secondary btn-sm" data-target="#exampleModal" data-toggle="modal" >Главная</button>
+    <a href="#" class="btn btn-outline-secondary btn-sm" >Обновить</a>
+    <a href="#" class="btn btn-outline-secondary btn-sm" >Выбрать все</a>
+    <a href="#" class="btn btn-outline-secondary btn-sm" >Отменить все</a>
+    <a href="#" class="btn btn-outline-success btn-sm" >Создать выбранные карты</a>
   </div>
 
-  <script>
-    $(document).ready(function(){
-      $("#myBtn").click(function(){
-        $("#myModal").modal();
-      });
-    });
-  </script>
+  <hr>
+  <br>
+
+  <div class="container">
+   <div class="row">
+     <div class="panel panel-default">
+       <div class="panel-heading">
+         <h3>
+           Фиксированная шапка таблицы 
+         </h3>
+       </div>
+       <table class="table table-fixed">
+         <thead>
+           <tr>
+             <th class="col-xs-2">№</th>
+             <th class="col-xs-8">Имя</th>
+             <th class="col-xs-2">Лет</th>
+           </tr>
+         </thead>
+
+         <tbody>
+           <tr>
+            <td class="col-xs-2">1</td>     
+            <td class="col-xs-8">Вася</td>      
+            <td class="col-xs-2">33</td>
+          </tr>
+          <tr>
+           <td class="col-xs-2">2</td>    
+           <td class="col-xs-8">Люба</td>      
+           <td class="col-xs-2">34</td>
+         </tr>
+         <tr>
+           <td class="col-xs-2">3</td>    
+           <td class="col-xs-8">Петя</td>      
+           <td class="col-xs-2">42</td>
+         </tr>
+         <tr>
+           <td class="col-xs-2">4</td>
+           <td class="col-xs-8">Алексей</td>
+           <td class="col-xs-2">32</td>
+         </tr>
+         <tr>
+           <td class="col-xs-2">5</td>
+           <td class="col-xs-8">Женя</td>
+           <td class="col-xs-2">31</td>
+         </tr>
+         <tr>
+           <td class="col-xs-2">6</td>
+           <td class="col-xs-8">Сергей</td>
+           <td class="col-xs-2">36</td>
+         </tr>
+         <tr>
+           <td class="col-xs-2">7</td>
+           <td class="col-xs-8">Андрей</td>
+           <td class="col-xs-2">22</td>
+         </tr>
+         <tr>
+           <td class="col-xs-2">8</td>
+           <td class="col-xs-8">Иринка</td>
+           <td class="col-xs-2">43</td>
+         </tr>
+       </tbody>
+     </table>
+   </div>
+ </div>
+</div>
+
+
+
+
+
 
 </body>
 </html>

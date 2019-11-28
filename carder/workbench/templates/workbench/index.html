@@ -14,47 +14,79 @@
 	<a href="#" class="btn btn-outline-secondary btn-sm" >Отменить все</a>
 	<a href="#" class="btn btn-outline-success btn-sm" >Создать выбранные карты</a>
 </div>
-<div align="center">
-	<table align="center">
-        <tr align="center">
-            <th>Карта</th>
-            <th>Наименование агрегата</th>
-            <th>Точки</th>
-            <th>Устройство нейтрализации</th>
-            <th>Местонахождение</th>
-            <th>Величина</th>
-        </tr>
-        {% for line in context %}
-            <tr title="карта">
-                <td><small>{{ line[0] }}</small></td>
-                <td><small>{{ line[1] }}</small></td>
-                <td><small>{{ line[2] }}</small></td>
-                <td><small></small></td>
-                <td><small>{{ line[3] }}</small></td>
+<br>
 
-                <td><a href="#">Make Card</a></td>
-            </tr>
-        {% endfor %}
-    </table>
+
+<div class="container">
+	
+
+	<table class="table2">
+		<thead>
+			<tr>
+				<th width="3vw"> </th>
+				<th width="4vw">Карта</th>
+				<th width="16vw">Агрегат</th>	
+				<th width="11vw">Устройство нейтрализации</th>
+				<th width="14vw">Местонахождение</th>	
+				<th width="10vw">Источник опасности</th>
+				<th width="6vw">Общее фото</th>
+				<th width="6vw">Фото</th>
+				<th width="6vw">Блокиратор</th>
+				<th width="4vw">Замок</th>	
+				<th width="10vw">Участок</th>
+				<th width="5vw">Папка фото</th>
+				<th width="5vw"> </th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{% for line in context %}
+
+			<tr style="background-color: 
+				{% if line[4] %}
+					palegreen
+				{% else %}
+					lightsalmon
+				{% endif %}
+					">
+				
+				{% if line[1] != '' %}
+				<td rowspan="{{ line[1] }}">V</td>
+				<td rowspan="{{ line[1] }}">{{ line[0] }}</td>
+				<td rowspan="{{ line[1] }}" title="{{ line[2] }}">{{ line[2] }}</td>
+				{% endif %}
+				<td>{{ line[6] }}</td>
+				<td>{{ line[7] }}</td>
+				<td>{{ line[8]+line[5]}}</td>
+
+				{% if line[1] != '' %}
+				<td rowspan="{{ line[1] }}">{{ line[3] }}</td>
+				{% endif %}
+				
+				<td>{{ line[9] }}</td>
+				<td>{{ line[10] }}</td>
+				<td>{{ line[11] }}</td>
+				<td>{{ line[12] }}</td>
+				<td>{{ line[13] }}</td>
+
+				<td width="10%"><a href="#">Card</a></td>
+			</tr>
+
+			{% endfor %}
+		</tbody>
+	</table>
 </div>
-<div align="center">
-
-...
-
-</div>
 
 
 
 
 
-
-
-
+<!--                    ----- MODAL MENU -----                 -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-body">
-				Действие закроет текущий документ. Уверенны?
+				Действие закроет текущий документ. Уверены?
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-outline-success btn-sm" data-dismiss="modal">НЕТ</button>
@@ -63,9 +95,6 @@
 		</div>
 	</div>
 </div>
-
-
-
 
 
 {% endblock %}

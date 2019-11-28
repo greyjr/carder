@@ -25,8 +25,10 @@ for cell in merged_cells:
 	if cell[2] == 1:
 		card_list[cell[0]][1] = (cell[1]-cell[0])
 
-for card in card_list:			#card: int
-	print(type(card))
+
+
+
+
 
 
 print(card_list)	
