@@ -1,16 +1,21 @@
 {% extends 'wrapper.html' %}
 
 {% block title %}
-	main page
+main page
 {% endblock %}
 
 {% block content %}
 
-	<br>
-	<div align="center">
-	    <a href="{{ url_for('bingo', workbook='Общая БМП.xlsx') }}">bingo</a>
-	</div>
+<br>
 
+
+
+<div align="center">
+	<form action="/sheet" method="POST" enctype="multipart/form-data">
+		<input type="file" name="excel_file" accept=".xlsx, .xls">
+		<input type="submit" value="Open File">
+	</form>
+</div>
 
 
 {% endblock %}

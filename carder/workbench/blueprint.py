@@ -14,9 +14,14 @@ def index():
 				+ build list of card with size
 				+ check valid card
 				+ mark valid card in card_list
-				- prepear context
+				+ prepear context
 				+ call render page"""
-	workbook = xlrd.open_workbook(str(request.args.get('workbook')), on_demand=True)
+	filename = request.args.get('book')
+	print(filename)
+	sheet = request.args.get('worksheet')
+	print('sheet: ', type(sheet), sheet)
+	workbook = xlrd.open_workbook('./files/excel/{}'.format(filename))
+	os.remove('./files/excel/{}'.format(filename))
 	current_sheet = workbook.sheet_by_name(str(request.args.get('worksheet'))) 		
 	
 	raw_table, card_list = initial_page(current_sheet)		

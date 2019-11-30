@@ -12,12 +12,13 @@
 	</button>
 </div>
 
+{{ filename }}
+
 <div align="center">
 {% for sheet in context %}
 <p>
-	<a href="{{ url_for('workbench.index', workbook = book, worksheet = sheet) }}"> {{sheet}} </a>
+	<a href="{{ url_for('workbench.index', book = filename, worksheet = sheet) }}"> {{sheet}} </a>
 </p>
-
 {% endfor %}
 </div>
 
