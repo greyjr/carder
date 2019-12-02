@@ -5,22 +5,24 @@
 {% endblock %}
 
 {% block content %}
-<div align="center">	
-	<button class="btn btn-outline-primary btn-sm" type="button" disabled>
-		<span class="spinner-border spinner-border-sm" role="status"></span>
-		Loading...
-	</button>
+
+
+
+<div>
+	<p align="center"> Загружен файл:  <b>{{ filename }} </b> <span><a id="chooseanother" href="{{ url_for('index')}}"> Выбрать другой</a> </span></p>
+	
 </div>
 
-{{ filename }}
 
-<div align="center">
-{% for sheet in context %}
-<p>
-	<a href="{{ url_for('workbench.index', book = filename, worksheet = sheet) }}"> {{sheet}} </a>
-</p>
-{% endfor %}
+<p align="center"> Выберите лист:</p>
+<div class="buttons" align="center">
+	<p align="center">
+		{% for sheet in context %}
+		<a href="{{ url_for('workbench.index', book = filename, worksheet = sheet) }}" class="btn btn-outline-secondary btn-sm" >{{sheet}}</a>
+		{% endfor %}
+	</p>
 </div>
+
 
 
 {% endblock %}

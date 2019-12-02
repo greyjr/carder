@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template, request, url_for
+from flask import render_template, request
 import xlrd
 import os
 
@@ -19,7 +19,6 @@ def sheet():
 		file = request.files['excel_file']
 		if not file:
 			return render_template('index.html')
-		print('something found...')
 		if file.filename.rsplit(".", 1)[1].lower() not in ['xlsx', 'xls']:
 			return render_template('index.html')
 		filename = file.filename
