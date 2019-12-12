@@ -12,7 +12,7 @@
 	<a href="#" class="btn btn-outline-secondary btn-sm" >Обновить</a>
 	<a href="#" class="btn btn-outline-secondary btn-sm" >Выбрать все</a>
 	<a href="#" class="btn btn-outline-secondary btn-sm" >Отменить все</a>
-	<a href="{{ url_for('workbench.carder', context = context) }}" class="btn btn-outline-success btn-sm" >Создать выбранные карты</a>
+	<a href="{{ url_for('workbench.carder', json_name = name) }}" class="btn btn-outline-success btn-sm" >Создать выбранные карты</a>
 </div>
 <br>
 
@@ -57,7 +57,7 @@
 				{% endif %}
 				<td>{{ line[6] }}</td>
 				<td>{{ line[7] }}</td>
-				<td>{{ line[8]+line[5]}}</td>
+				<td>{{ line[8] }} {{ line[5]}}</td>
 
 				{% if line[1] != '' %}
 				<td rowspan="{{ line[1] }}">{{ line[3] }}</td>

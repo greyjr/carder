@@ -1,7 +1,8 @@
-from flask import Blueprint
-from flask import render_template, request
+from flask import Blueprint, render_template, request
 import xlrd
 import os
+import json
+from datetime import datetime
 
 
 workbench = Blueprint('workbench', __name__, template_folder='templates')
@@ -20,7 +21,6 @@ def index():
 	filename = request.args.get('book')
 	sheet = request.args.get('worksheet')
 	workbook = xlrd.open_workbook('./files/excel/{}'.format(filename))
-	#os.remove('./files/excel/{}'.format(filename))
 	current_sheet = workbook.sheet_by_name(str(request.args.get('worksheet'))) 		
 
 	raw_table, card_list = initial_page(current_sheet)		
@@ -40,21 +40,24 @@ def index():
 			context_line.extend(raw_table[card_line + line + 1])
 			context.append(context_line)
 
-	return render_template('workbench/index.html', context=context)
+	work_json_context_file_name = datetime.now().strftime("%Y_%m_%d_%H_%M_%S_%f")
+	with open('./files/json/' + work_json_context_file_name, 'w') as file:
+		json.dump(context, file, indent=4, ensure_ascii=True)							# storage context on server
+
+	return render_template('workbench/index.html', context=context, name=work_json_context_file_name)
 
 # -----------------------------------------------------------------------------------------------------
 def valid_cell(cell_value):
+
 	return str(int(cell_value)) if type(cell_value) == float else cell_value
 
 
 def initial_page(current_sheet):
-
-
-	raw_table = [['header line']]
+	raw_table = [['header line']]								# skip first row
 	card_list = {}
 	current_photo_folder = ""
 
-	for line_number in range(1,current_sheet.nrows):			# nrows = last row in excell sheet	
+	for line_number in range(1,current_sheet.nrows):			# nrows = last row in excel sheet	
 		line = current_sheet.row_values(line_number, 0, 14)		# take line
 		line.extend(['']*(14 - len(line)))
 		line_usefull = [valid_cell(line[i]) for i in [2,4,5,6,8,9,10,12,13]]
@@ -86,19 +89,29 @@ def initial_page(current_sheet):
 	return raw_table, card_list
 
 
-
 def blockirator_total_count(card_list,raw_table):
 	pass
 	pass
 
 
-
 @workbench.route('/go')
 def carder():
-	context = request.args.get('context')
-	print('cards making...', len(context))
+	context = json.load(open('./files/json/' + request.args.get('json_name')))
+
+	cards = {}
+	for line in context:
+		if line[4] and line[0]:
+			cards[line[0]] = [line[1], line[2]]
+#	print(cards)
+
+
+
+	print('************** FINISHED ****************')
 	return render_template('index.html')
 
 
-def pocket():
+def create_card(content):
 	pass
+	print('card save...')
+
+
